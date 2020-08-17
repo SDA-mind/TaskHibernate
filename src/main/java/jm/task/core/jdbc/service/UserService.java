@@ -17,4 +17,5 @@ public interface UserService {
     List<User> getAllUsers() throws SQLException;
 
     void cleanUsersTable() throws SQLException;
+    void close() throws SQLException;
 }
