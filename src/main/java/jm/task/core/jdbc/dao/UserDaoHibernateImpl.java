@@ -27,10 +27,10 @@ public class UserDaoHibernateImpl implements UserDao {
                     "name varchar(255) not null," +
                     "last_name varchar(255) not null," +
                     "age integer not null);").executeUpdate();
+            tx.commit();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
-            tx.commit();
             session.close();
         }
         System.out.println("Таблица создана");
@@ -42,10 +42,10 @@ public class UserDaoHibernateImpl implements UserDao {
         Transaction tx = session.beginTransaction();
         try {
             session.createSQLQuery("drop table Users").executeUpdate();
+            tx.commit();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
-            tx.commit();
             session.close();
         }
         System.out.println("Таблица удалена");
@@ -58,11 +58,11 @@ public class UserDaoHibernateImpl implements UserDao {
         try {
             session.createSQLQuery("insert into Users(name , last_name, age)" +
                     " values ('" + name + "', '" + lastName + "', " + age + ");").executeUpdate();
+            tx.commit();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
-            tx.commit();
             session.close();
         }
         System.out.println("Добавлен User: " + name + "', '" + lastName + "', " + age);
@@ -74,11 +74,11 @@ public class UserDaoHibernateImpl implements UserDao {
         Transaction tx = session.beginTransaction();
         try {
             session.createSQLQuery("delete from Users where id = " + id).executeUpdate();
+            tx.commit();
 
         } catch (Exception e) {
 
         } finally {
-            tx.commit();
             session.close();
         }
         System.out.println("Удалён User id: " + id);
@@ -108,10 +108,10 @@ public class UserDaoHibernateImpl implements UserDao {
                 System.out.println("User age: " + user.getAge());
             }
             System.out.println("----------------------");
+            tx.commit();
         } catch (Exception e) {
 
         } finally {
-            tx.commit();
             session.close();
         }
         return list;
@@ -124,10 +124,10 @@ public class UserDaoHibernateImpl implements UserDao {
         try {
             session.createSQLQuery("delete from Users").executeUpdate();
             System.out.println("Все User удалены");
+            tx.commit();
         } catch (Exception e) {
 
         } finally {
-            tx.commit();
             session.close();
         }
     }
