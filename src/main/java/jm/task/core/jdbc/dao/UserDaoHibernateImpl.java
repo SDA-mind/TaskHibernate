@@ -30,6 +30,7 @@ public class UserDaoHibernateImpl implements UserDao {
             tx.commit();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            tx.rollback();
         } finally {
             session.close();
         }
@@ -45,6 +46,7 @@ public class UserDaoHibernateImpl implements UserDao {
             tx.commit();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            tx.rollback();
         } finally {
             session.close();
         }
@@ -62,6 +64,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            tx.rollback();
         } finally {
             session.close();
         }
@@ -77,7 +80,7 @@ public class UserDaoHibernateImpl implements UserDao {
             tx.commit();
 
         } catch (Exception e) {
-
+            tx.rollback();
         } finally {
             session.close();
         }
@@ -110,6 +113,7 @@ public class UserDaoHibernateImpl implements UserDao {
             System.out.println("----------------------");
             tx.commit();
         } catch (Exception e) {
+            tx.rollback();
 
         } finally {
             session.close();
@@ -126,7 +130,7 @@ public class UserDaoHibernateImpl implements UserDao {
             System.out.println("Все User удалены");
             tx.commit();
         } catch (Exception e) {
-
+            tx.rollback();
         } finally {
             session.close();
         }
